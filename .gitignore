@@ -1,3 +1,11 @@
+alembic
+alembic.ini
+config.ini
+old
+venv
+packages
+twisted
+
 *.py[cod]
 
 # C extensions
