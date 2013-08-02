@@ -2,12 +2,15 @@
  
 import sys
 from daemon import Daemon
+from config import Config
 
 from twisted.internet import reactor
 from twisted.names import dns
 from twisted.names import client, server
 
 from dbresolver import DatabaseAuthority
+
+DAEMON_CONFIG = Config('Daemon')
 
 class DnsDaemon(Daemon):
     def run(self):
@@ -25,7 +28,7 @@ class DnsDaemon(Daemon):
         reactor.run()
  
 if __name__ == "__main__":
-        daemon = DnsDaemon('/tmp/daemon-example.pid')
+        daemon = DnsDaemon(DAEMON_CONFIG['pid_file'] or '/tmp/dnsdaemon.pid')
         if len(sys.argv) == 2:
                 if 'start' == sys.argv[1]:
                         daemon.start()
