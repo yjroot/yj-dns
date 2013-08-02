@@ -1,19 +1,14 @@
 #!/usr/bin/env python
  
-import sys, time
+import sys
 from daemon import Daemon
 
-from twisted.internet.protocol import Factory, Protocol
 from twisted.internet import reactor
 from twisted.names import dns
 from twisted.names import client, server
-from twisted.names import authority
 
 from dbresolver import DatabaseAuthority
 
-import mysql.connector
-from mysql.connector import errorcode
- 
 class DnsDaemon(Daemon):
     def run(self):
         authority = DatabaseAuthority()
